@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Portfolio Saraswati Nur Bilqis</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        .clock {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            border: 10px solid #fa044e;
+            border-radius: 50%;
+            margin: 20px auto;
+            background: white;
+        }
+        .hand {
+            position: absolute;
+            background: #230ee7;
+            transform-origin: bottom;
+            bottom: 50%;
+            left: 50%;
+            transform: translateX(-50%) scaleX(-1);
+        }
+        .hour {
+            height: 50px;
+            width: 6px;
+            background: #333;
+            z-index: 3;
+        }
+        .minute {
+            height: 70px;
+            width: 4px;
+            background: #666;
+            z-index: 2;
+        }
+        .second {
+            height: 90px;
+            width: 2px;
+            background: red;
+            z-index: 1;
+        }
+        .numbers {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content: center;
+            font-size: 1.5rem;
+            color: #333;
+        }
+        .number {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            transform: translate(-50%, -50%);
+        }
+        .card {
+            background-color: #f8f9fa; /* Warna latar belakang */
+            border: 1px solid #F25278; /* Border berwarna biru */
+            border-radius: 10px; /* Sudut melengkung */
+            transition: transform 0.2s; /* Efek transisi */
+        }
+        .card:hover {
+            transform: scale(1.05); /* Zoom saat hover */
+        }
+        .card-title {
+            color: #F25278; /* Warna judul */
+        }
+        .card-img-top {
+            border-radius: 10px 10px 0 0; /* Sudut melengkung pada gambar */
+        }
+        .modal-header {
+            background-color: #F25278; /* Warna header modal */
+            color: white; /* Warna teks header modal */
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm" style="background-color:#e682f3;">
+        <div class="container">
+            <a class="navbar-brand" href="#">Saraswati Nur Bilqis</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section class="jumbotron text-center">
+        <img src="img/saras.jpg" style="width: 200px;">
+        <h1 class="display-4">Hello Guys</h1>
+        <p class="lead">Perkenalkan Nama Saya Saraswati Nur Bilqis. Mahasiswi Kampus STIKOM MUHAMMADIYAH BATAM Program Studi Teknik Informatika</p>
+    </section>
+
+    <!-- About Section -->
+    <div class="container">
+        <h1>Tugas</h1>
+        <div class="row">
+          
+                    <!-- Hello World Card -->
+                    <div class="col-md-3 mb-4">
+                        <div class="card">
+                            <img src="https://via.placeholder.com/300x150" class="card-img-top" alt="Hello World">
+                            <div class="card-body">
+                                <h5 class="card-title">Hello World</h5>
+                                <p>Hello World adalah contoh program sederhana yang biasanya digunakan untuk memperkenalkan dasar-dasar pemrograman.</p>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#helloWorldModal">
+                                    Tampilkan Hello World
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+            
+
+            <!-- Luas Persegi Panjang Card -->
+            <div class="col-md-3 mb-4">
+                <div class="card">
+                    <img src="https://via.placeholder.com/300x150" class="card-img-top" alt="Luas Persegi Panjang">
+                    <div class="card-body">
+                        <h5 class="card-title">Luas Persegi Panjang</h5>
+                        <p>Program ini mencari luas dari persegi panjang.</p>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#luasPersegiModal">
+                            Hitung Luas
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Segitiga Bintang Card -->
+            <div class="col-md-3 mb-4">
+                <div class="card">
+                    <img src="https://via.placeholder.com/300x150" class="card-img-top" alt="Segitiga Bintang">
+                    <div class="card-body">
+                        <h5 class="card-title">Segitiga Bintang</h5>
+                        <p>Program ini menampilkan segitiga bintang berdasarkan jumlah baris yang dimasukkan.</p>
+                        <div class="form-group">
+                            <label for="jumlahSegitiga">Jumlah Baris:</label>
+                            <input type="number" id="jumlahSegitiga" class="form-control" placeholder="Jumlah baris" min="1">
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick="hitungSegitigaBintang()">
+                            Tampilkan Segitiga Bintang
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jam Dinding Card -->
+            <div class="col-md-3 mb-4">
+                <div class="card">
+                    <div class="clock">
+                        <div id="hour" class="hand hour"></div>
+                        <div id="min" class="hand minute"></div>
+                        <div id="sec" class="hand second"></div>
+                        <div class="numbers">
+                            <div class="number" style="top: 10%; left: 50%; transform: translate(-50%, -50%);">12</div>
+                            <div class="number" style="top: 17%; left: 70%; transform: translate(-50%, -50%);">1</div>
+                            <div class="number" style="top: 32%; left: 85%; transform: translate(-50%, -50%);">2</div>
+                            <div class="number" style="top: 50%; left: 90%; transform: translate(-50%, -50%);">3</div>
+                            <div class="number" style="top: 68%; left: 83%; transform: translate(-50%, -50%);">4</div>
+                            <div class="number" style="top: 83%; left: 70%; transform: translate(-50%, -50%);">5</div>
+                            <div class="number" style="top: 90%; left: 50%; transform: translate(-50%, -50%);">6</div>
+                            <div class="number" style="top: 83%; left: 31%; transform: translate(-50%, -50%);">7</div>
+                            <div class="number" style="top: 68%; left: 17%; transform: translate(-50%, -50%);">8</div>
+                            <div class="number" style="top: 50%; left: 10%; transform: translate(-50%, -50%);">9</div>
+                            <div class="number" style="top: 32%; left: 15%; transform: translate(-50%, -50%);">10</div>
+                            <div class="number" style="top: 17%; left: 30%; transform: translate(-50%, -50%);">11</div>
+                        </div>
+                    </div>
+                
+                    <div class="card-body">
+                        <h5 class="card-title">Jam Dinding Analog</h5>
+                        <p>Program ini menampilkan jam dinding analog yang menunjukkan waktu saat ini.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal untuk Hello World -->
+    <div class="modal fade" id="helloWorldModal" tabindex="-1" role="dialog" aria-labelledby="helloWorldLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="helloWorldLabel">Hello World</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Hello World!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal untuk Luas Persegi Panjang -->
+<div class="modal fade" id="luasPersegiModal" tabindex="-1" role="dialog" aria-labelledby="luasPersegiLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="luasPersegiLabel">Luas Persegi Panjang</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Masukkan panjang dan lebar:</p>
+                <input type="number" id="panjang" placeholder="Panjang" class="form-control mb-2">
+                <input type="number" id="lebar" placeholder="Lebar" class="form-control mb-2">
+                <button type="button" class="btn btn-success" onclick="hitungLuas()">Hitung</button>
+                <div id="luasResult" class="mt-2"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+ <!-- Modal untuk Segitiga Bintang -->
+ <div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Hasil Segitiga Bintang</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="resultContent"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function hitungLuas() {
+    // Ambil nilai input
+    const panjang = parseFloat(document.getElementById('panjang').value);
+    const lebar = parseFloat(document.getElementById('lebar').value);
+    
+    // Periksa apakah input valid
+    if (isNaN(panjang) || isNaN(lebar) || panjang <= 0 || lebar <= 0) {
+        document.getElementById('luasResult').innerText = "Silakan masukkan nilai yang valid untuk panjang dan lebar.";
+        return;
+    }
+    
+    // Hitung luas
+    const luas = panjang * lebar;
+    
+    // Tampilkan hasil
+    document.getElementById('luasResult').innerText = "Luas Persegi Panjang: " + luas + " satuan persegi.";
+}
+
+// Kosongkan input dan hasil
+function clearInputs() {
+    document.getElementById('panjang').value = '';
+    document.getElementById('lebar').value = '';
+    document.getElementById('luasResult').innerText = ''; // Kosongkan hasil
+}
+
+// Mengosongkan hasil saat modal ditutup
+$('#luasPersegiModal').on('hidden.bs.modal', function () {
+    clearInputs();
+});
+
+function hitungSegitigaBintang() {
+    const jumlah = parseInt(document.getElementById('jumlahSegitiga').value);
+    let hasil = '';
+
+    // Validasi input
+    if (isNaN(jumlah) || jumlah < 1) {
+        hasil = "Silakan masukkan jumlah baris yang valid.";
+    } else {
+        // Buat segitiga bintang
+        for (let i = 1; i <= jumlah; i++) {
+            hasil += '*'.repeat(i) + '<br>'; // Menghasilkan bintang sesuai jumlah baris
+        }
+    }
+    
+    // Tampilkan hasil di dalam modal
+    document.getElementById('resultContent').innerHTML = hasil;
+    
+    // Tampilkan modal
+    $('#resultModal').modal('show');
+}
+
+// Mengosongkan konten saat modal ditutup
+$('#resultModal').on('hidden.bs.modal', function () {
+    document.getElementById('resultContent').innerText = ''; // Kosongkan konten
+    document.getElementById('jumlahSegitiga').value = ''; // Kosongkan input
+});
+
+function updateClock() {
+            const now = new Date();
+            const hh = now.getHours(); // Waktu lokal secara langsung
+            const mm = now.getMinutes();
+            const ss = now.getSeconds();
+
+            // Perhitungan rotasi jarum
+            const hRotation = 30 * hh + mm / 2; // 30 derajat per jam, 0.5 per menit
+            const mRotation = 6 * mm;          // 6 derajat per menit
+            const sRotation = 6 * ss;          // 6 derajat per detik
+
+            // Set rotasi pada masing-masing elemen
+            document.getElementById('hour').style.transform = `rotate(${hRotation}deg)`;
+            document.getElementById('min').style.transform = `rotate(${mRotation}deg)`;
+            document.getElementById('sec').style.transform = `rotate(${sRotation}deg)`;
+        }
+
+        // Jalankan setiap detik
+        setInterval(updateClock, 1000);
+        updateClock(); // Inisialisasi
+</script>
+<!-- Bootstrap and jQuery JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+
+
+
