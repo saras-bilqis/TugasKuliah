@@ -86,6 +86,37 @@
             background-color: #F25278; /* Warna header modal */
             color: white; /* Warna teks header modal */
         }
+        .lamp {
+            width: 30px; /* Ukuran lampu dikecilkan */
+            height: 30px; /* Ukuran lampu dikecilkan */
+            margin: 10px auto;
+            border-radius: 50%;
+            background-color: gray;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+        .lamp.on {
+            background-color: yellow;
+        }
+        .hidden {
+            display: none;
+        }
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        .button {
+            font-size: 12px; /* Ukuran font tombol dikecilkan */
+            padding: 5px 10px; /* Padding tombol dikecilkan */
+        }
+        .lamp-container {
+            display: flex;
+            justify-content: center; /* Pusatkan lampu secara horizontal */
+            flex-direction: ROW; /* Atur lampu dalam kolom */
+            align-items: center; /* Pusatkan lampu secara vertikal */
+            height: 150px; /* Tinggi kontainer lampu */
+        }
     </style>
 </head>
 <body>
@@ -108,11 +139,11 @@
 
     <!-- About Section -->
     <div class="container">
-        <h1>Tugas Kuliah</h1>
+        <h1>Tugas</h1>
         <div class="row">
           
-                    <!-- Hello World Card -->
-                    <div class="col-md-3 mb-4">
+                      <!-- Hello World Card -->
+                      <div class="col-md-3 mb-4">
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">Hello World</h5>
@@ -156,7 +187,7 @@
             </div>
 
             <!-- Jam Dinding Card -->
-            <div class="col-md-3 mb-4">
+               <div class="col-md-3 mb-4">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Jam Dinding Analog</h5>
@@ -181,8 +212,7 @@
                         </div>
                     </div>
                 
-                    
-                    </div>
+                </div>
                 </div>
             </div>
         </div>
@@ -249,8 +279,11 @@
         </div>
     </div>
 </div>
-    
- <!-- Card Rangkaian Lampu -->
+
+ <!-- About Section -->
+ <div class="container">
+    <div class="row">
+<!-- Card Rangkaian Lampu -->
         <div class="col-md-3 mb-4">
             <div class="card">
                 <div class="card-body">
@@ -311,7 +344,7 @@
         </div>
     </div>
 </div>
-    
+
 <script>
 function hitungLuas() {
     // Ambil nilai input
@@ -390,7 +423,8 @@ function updateClock() {
         // Jalankan setiap detik
         setInterval(updateClock, 1000);
         updateClock(); // Inisialisasi
-      function showSeries() {
+
+        function showSeries() {
             document.getElementById('seriesControls').classList.remove('hidden');
             document.getElementById('parallelControls').classList.add('hidden');
         }
@@ -455,6 +489,3 @@ function closeControls(type) {
 
 </body>
 </html>
-
-
-
