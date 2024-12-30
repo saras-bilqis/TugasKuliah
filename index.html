@@ -108,7 +108,7 @@
 
     <!-- About Section -->
     <div class="container">
-        <h1>Tugas</h1>
+        <h1>Tugas Kuliah</h1>
         <div class="row">
           
                     <!-- Hello World Card -->
@@ -249,7 +249,68 @@
         </div>
     </div>
 </div>
+<!-- Card Rangkaian Lampu -->
+        <div class="col-md-3 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Rangkaian Lampu</h5>
+                    <p>Pilih jenis rangkaian:</p>
+                    <div id="initialControls"></div>
+                        <button class="button" onclick="showSeries()">Rangkaian Seri</button>
+                        <button class="button" onclick="showParallel()">Rangkaian Paralel</button>
+                    
+                </div>
+                
+                <div id="seriesControls" class="hidden">
+                    <h5>Rangkaian Seri</h5>
+                    <div id="seriesLamp1" class="lamp"></div>
+                    <div id="seriesLamp2" class="lamp"></div>
+                    <div id="seriesLamp3" class="lamp"></div>
+                    <div id="seriesLamp4" class="lamp"></div>
+                    <div id="seriesLamp5" class="lamp"></div>
+                    <button class="button" onclick="turnOnAllSeries()">Nyalakan Semua Lampu</button>
+                    <button class="button" onclick="turnOffAllSeries()">Matikan Semua Lampu</button>
+                
+                <div class="close-button-container"></div>
+                    <button class="button" onclick="closeControls('series')">Close</button> <!-- Tombol Close -->
+                </div>
 
+                <div id="parallelControls" class="hidden">
+                    <h3>Rangkaian Paralel</h3>
+                    <div id="parallelLamp1" class="lamp"></div>
+                    <div id="parallelLamp2" class="lamp"></div>
+                    <div id="parallelLamp3" class="lamp"></div>
+                    <div id="parallelLamp4" class="lamp"></div>
+                    <div id="parallelLamp5" class="lamp"></div>
+                    
+                    <div class="button-container">
+                        <button class="button" onclick="turnOn(1, 'parallel')">Hidupkan Lampu 1</button>
+                        <button class="button" onclick="turnOff(1, 'parallel')">Matikan Lampu 1</button>
+                    </div>
+                    <div class="button-container">
+                        <button class="button" onclick="turnOn(2, 'parallel')">Hidupkan Lampu 2 </button>
+                        <button class="button" onclick="turnOff(2, 'parallel')">Matikan Lampu 2</button>
+                    </div>
+                    <div class="button-container">
+                        <button class="button" onclick="turnOn(3, 'parallel')">Hidupkan Lampu 3</button>
+                        <button class="button" onclick="turnOff(3, 'parallel')">Matikan Lampu 3</button>
+                    </div>
+                    <div class="button-container">
+                        <button class="button" onclick="turnOn(4, 'parallel')">Hidupkan Lampu 4</button>
+                        <button class="button" onclick="turnOff(4, 'parallel')">Matikan Lampu 4</button>
+                    </div>
+                    <div class="button-container">
+                        <button class="button" onclick="turnOn(5, 'parallel')">Hidupkan Lampu 5</button>
+                        <button class="button" onclick="turnOff(5, 'parallel')">Matikan Lampu 5</button>
+                    </div>
+                    <div class="close-button-container">
+                        <button class="button" onclick="closeControls('parallel')">Close</button> <!-- Tombol Close -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
 <script>
 function hitungLuas() {
     // Ambil nilai input
@@ -328,6 +389,63 @@ function updateClock() {
         // Jalankan setiap detik
         setInterval(updateClock, 1000);
         updateClock(); // Inisialisasi
+      function showSeries() {
+            document.getElementById('seriesControls').classList.remove('hidden');
+            document.getElementById('parallelControls').classList.add('hidden');
+        }
+
+        function showParallel() {
+            document.getElementById('parallelControls').classList.remove('hidden');
+            document.getElementById('seriesControls').classList.add('hidden');
+        }
+
+        function turnOn(lampNumber, type) {
+            const lamp = document.getElementById(type + 'Lamp' + lampNumber);
+            lamp.classList.add('on');
+        }
+
+        function turnOff(lampNumber, type) {
+            const lamp = document.getElementById(type + 'Lamp' + lampNumber);
+            lamp.classList.remove('on');
+        }
+
+        function turnOnAllSeries() {
+            for (let i = 1; i <= 5; i++) {
+                turnOn(i, 'series');
+            }
+        }
+
+        function turnOffAllSeries() {
+            for (let i = 1; i <= 5; i++) {
+                turnOff(i, 'series');
+            }
+        }
+        function closeControls(type) {
+    console.log("Close button clicked for: " + type); // Debugging
+    if (type === 'series') {
+        document.getElementById('seriesControls').classList.add('hidden');
+        turnOffAllSeries(); // Matikan semua lampu seri
+    } else if (type === 'parallel') {
+        document.getElementById('parallelControls').classList.add('hidden');
+        for (let i = 1; i <= 5; i++) {
+            turnOff(i, 'parallel'); // Matikan semua lampu paralel
+        }
+    }
+}
+function closeControls(type) {
+    console.log("Close button clicked for: " + type); // Debugging
+    if (type === 'series') {
+        document.getElementById('seriesControls').classList.add('hidden');
+        turnOffAllSeries(); // Matikan semua lampu seri
+    } else if (type === 'parallel') {
+        document.getElementById('parallelControls').classList.add('hidden');
+        for (let i = 1; i <= 5; i++) {
+            turnOff(i, 'parallel'); // Matikan semua lampu paralel
+        }
+    }
+    // Tampilkan kembali tampilan awal
+    document.getElementById('initialControls').classList.remove('hidden');
+}
 </script>
 <!-- Bootstrap and jQuery JS -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
